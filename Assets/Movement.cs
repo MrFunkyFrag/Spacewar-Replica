@@ -22,9 +22,8 @@ public class Movement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");      
 
         transform.Rotate(Vector3.back, horizontal * rotationSpeed); 
-        // nie wiem dlaczego akurat Vector3.back a nie Vector3.forward ale zakladam,
-        // ze ma to cos wspolnego z orientacja sprite'a (zapewne podstawa
-        // trojkata jest "przodem").
+        // nie wiem dlaczego akurat Vector3.back powoduje obrot zgodny z ruchem
+        // wskazowek zegara a nie Vector3.forward
 
         if (Input.GetKey(KeyCode.S)) 
         {
