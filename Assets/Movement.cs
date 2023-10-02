@@ -5,13 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float horizontal;
+    private float horizontalInput;
+    private bool thrustInput;
 
+    public KeyCode thrustKey;
+    public string inputAxis;
     public float rotationSpeed;
     public float thrust;
     public float maxVelocity;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -19,22 +22,35 @@ public class Movement : MonoBehaviour
     
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");      
+        HorizontalInput(inputAxis);
+        ThrustInput(thrustKey);        
 
-        transform.Rotate(Vector3.back, horizontal * rotationSpeed); 
-        // nie wiem dlaczego akurat Vector3.back powoduje obrot zgodny z ruchem
-        // wskazowek zegara a nie Vector3.forward
+        transform.Rotate(Vector3.back, horizontalInput * rotationSpeed);     
 
-        if (Input.GetKey(KeyCode.S)) 
+    }
+
+    private void FixedUpdate()
+    {
+        if (thrustInput)
         {
             rb.AddForce(transform.up * thrust);
         }
-        
+
         // velocity limit to prevent being faster than projectiles
         if (rb.velocity.magnitude > maxVelocity)
         {
-            rb.velocity = rb.velocity.normalized * maxVelocity;            
+            rb.velocity = rb.velocity.normalized * maxVelocity;
         }
 
+    }
+
+    private void HorizontalInput(string inputAxis)
+    {
+        horizontalInput = Input.GetAxisRaw(inputAxis);
+    }
+
+    private void ThrustInput(KeyCode inputKey)
+    {
+        thrustInput = Input.GetKey(inputKey);
     }
 }

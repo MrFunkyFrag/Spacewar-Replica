@@ -8,16 +8,19 @@ public class LaserBehaviour : MonoBehaviour
     public float lifeSpan;
     private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
         Destroy(gameObject, lifeSpan);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.velocity = transform.up * speed;
                 

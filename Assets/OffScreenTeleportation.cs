@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class OffScreenTeleportation : MonoBehaviour
 {
-    // uzylem tego samego skryptu dla gracza i dla lasera. Jest to ok, czy
-    // raczej nie nalezy tak robic?
-
+   
     private Camera mainCamera;
     private float cameraWidth;
     private float cameraHeight;
-
-    // ponizsze rozwiazanie zawijania pozycji gracza ma taki minus ze pole gry
-    // jest zalezne od proporcji ekranu
-    // po przemysleniu chyba powinienem to inaczej rozwiazac
-    // pole gry powinno byc takie samo niezalezne od proporcji ekranu
 
     // Start is called before the first frame update
     void Start()

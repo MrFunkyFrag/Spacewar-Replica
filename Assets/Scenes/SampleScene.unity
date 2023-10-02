@@ -134,6 +134,9 @@ GameObject:
   - component: {fileID: 67692431}
   - component: {fileID: 67692430}
   - component: {fileID: 67692432}
+  - component: {fileID: 67692434}
+  - component: {fileID: 67692433}
+  - component: {fileID: 67692435}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -204,7 +207,8 @@ Transform:
   m_LocalPosition: {x: 30.03, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1024236707}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,6 +238,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &67692433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67692429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2138f84ab408ea54f8ebb737e8346ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrustKey: 107
+  inputAxis: Horizontal2
+  rotationSpeed: 0.25
+  thrust: 3
+  maxVelocity: 10
+--- !u!50 &67692434
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67692429}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &67692435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67692429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decad506b2a8bb246b44deb16731d2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 1268749498483564995, guid: feb326d6f3030a64da3dbfb416aeb38a, type: 3}
+  laserSpawnPoint: {fileID: 1024236707}
+  fireKey: 105
+  fireRate: 0.3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f825aac1a5c91dd4d828efefe9ef434b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGravitationalForce: 20
+  maxGravitationalForce: 5
   distanceScale: 0.2
   destroyRadius: 0.5
 --- !u!58 &838053756
@@ -466,6 +524,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1024236706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024236707}
+  m_Layer: 0
+  m_Name: P2 Front Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024236707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024236706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.099, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 67692431}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396341025
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,8 +589,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2138f84ab408ea54f8ebb737e8346ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrustKey: 115
+  inputAxis: Horizontal
   rotationSpeed: 0.25
-  thrust: 1.25
+  thrust: 3
   maxVelocity: 10
 --- !u!50 &1396341027
 Rigidbody2D:
@@ -632,6 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 1268749498483564995, guid: feb326d6f3030a64da3dbfb416aeb38a, type: 3}
   laserSpawnPoint: {fileID: 598081252}
+  fireKey: 119
   fireRate: 0.3
 --- !u!114 &1396341032
 MonoBehaviour:

@@ -8,31 +8,20 @@ public class Shooting : MonoBehaviour
     private GameObject laserPrefab;
     [SerializeField]
     private Transform laserSpawnPoint;
-
-    // przypomnialem sobie dlaczego w moich skryptach zawsze mam
-    // przemieszane variables prywatne z publicznymi, to dlatego, ze ja nie sortuje ich
-    // wedlug access type tylko wedlug dzielonej funkcjonalnosci. Czy doradzasz segregowac
-    // je w Twój sposob?
-
+        
     // fire rate variables
     private float canFire = 0f;
+    public KeyCode fireKey;
     public float fireRate;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
 
     void Update()
     {
-        fireLaser();        
+        fireLaser(fireKey);        
     }
 
-    private void fireLaser()
+    private void fireLaser(KeyCode fireKey)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(fireKey))
         {
             if (Time.time > canFire)
             {
